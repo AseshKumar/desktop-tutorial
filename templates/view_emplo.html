@@ -1,0 +1,33 @@
+{% extends 'common.html' %}
+
+{% block biswal %}
+    {% load static %}
+    <table align="center" border="2">
+     <tr><th colspan="5">View all Employee Details</th></tr>
+    <tr>
+        <th>Idon</th>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+   {% for x in data %}
+        <tr>
+        <th>{{ x.idno }}</th>
+        <th>{{ x.name }}</th>
+        <th>{{ x.salary }}</th>
+        <th>
+            <a href="{% url 'update' %}?id={{ x.idno }}">
+                Update
+            </a>
+        </th>
+
+        <th>
+            <a href="{% url 'delete' %}?no={{ x.idno }}">
+            <img src="{% static 'images/icon-delete-16.jpg' %}" width="30" height="30">
+            </a>
+        </th>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
